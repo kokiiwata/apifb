@@ -30,3 +30,4 @@ public class ApifbBoot { // #change_it_first
         return System.getProperty("lasta.env") == null;
     }
 }
+
