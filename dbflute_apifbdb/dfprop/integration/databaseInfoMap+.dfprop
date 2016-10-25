@@ -1,0 +1,6 @@
+map:{
+    ; url = jdbc:mysql://localhost:3306/apifbdb
+	; schema =
+    ; user = apifbdb
+    ; password = apifbdb
+}
