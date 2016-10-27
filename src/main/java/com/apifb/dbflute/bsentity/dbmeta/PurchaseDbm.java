@@ -101,7 +101,7 @@ public class PurchaseDbm extends AbstractDBMeta {
     protected final String _tableDbName = "PURCHASE";
     protected final String _tableDispName = "PURCHASE";
     protected final String _tablePropertyName = "purchase";
-    protected final TableSqlName _tableSqlName = new TableSqlName("PURCHASE", _tableDbName);
+    protected final TableSqlName _tableSqlName = new TableSqlName("MAIHAMADB.PUBLIC.PURCHASE", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
     public String getTableDispName() { return _tableDispName; }

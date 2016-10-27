@@ -27,7 +27,6 @@ import org.dbflute.cbean.scoping.*;
 import org.dbflute.dbmeta.DBMetaProvider;
 import org.dbflute.twowaysql.factory.SqlAnalyzerFactory;
 import org.dbflute.twowaysql.style.BoundDateDisplayTimeZoneProvider;
-import com.apifb.dbflute.allcommon.CDef;
 import com.apifb.dbflute.allcommon.DBFluteConfig;
 import com.apifb.dbflute.allcommon.DBMetaInstanceHandler;
 import com.apifb.dbflute.allcommon.ImplementedInvokerAssistant;
@@ -93,13 +92,13 @@ public class BsServiceRankCB extends AbstractConditionBean {
     //                                                                 ===================
     /**
      * Accept the query condition of primary key as equal.
-     * @param serviceRankCode (サービスランクコード): PK, NotNull, CHAR(3), classification=ServiceRank. (NotNull)
+     * @param serviceRankCode (サービスランクコード): PK, NotNull, CHAR(3). (NotNull)
      * @return this. (NotNull)
      */
-    public ServiceRankCB acceptPK(CDef.ServiceRank serviceRankCode) {
+    public ServiceRankCB acceptPK(String serviceRankCode) {
         assertObjectNotNull("serviceRankCode", serviceRankCode);
         BsServiceRankCB cb = this;
-        cb.query().setServiceRankCode_Equal_AsServiceRank(serviceRankCode);
+        cb.query().setServiceRankCode_Equal(serviceRankCode);
         return (ServiceRankCB)this;
     }
 
@@ -308,7 +307,7 @@ public class BsServiceRankCB extends AbstractConditionBean {
                              , HpSDRFunctionFactory sdrFuncFactory)
         { super(baseCB, qyCall, purpose, dbmetaProvider, sdrFuncFactory); }
         /**
-         * (サービスランクコード)SERVICE_RANK_CODE: {PK, NotNull, CHAR(3), classification=ServiceRank}
+         * (サービスランクコード)SERVICE_RANK_CODE: {PK, NotNull, CHAR(3)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnServiceRankCode() { return doColumn("SERVICE_RANK_CODE"); }
@@ -457,6 +456,13 @@ public class BsServiceRankCB extends AbstractConditionBean {
      */
     public void orScopeQueryAndPart(AndQuery<ServiceRankCB> andCBLambda) {
         xorSQAP((ServiceRankCB)this, andCBLambda);
+    }
+
+    // ===================================================================================
+    //                                                                       Cursor Select
+    //                                                                       =============
+    public void customizeCursorSelect(SVOptionCall<CursorSelectOption> opLambda) {
+        doAcceptCursorSelectOption(opLambda);
     }
 
     // ===================================================================================

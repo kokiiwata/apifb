@@ -28,7 +28,6 @@ import org.dbflute.cbean.result.*;
 import org.dbflute.exception.*;
 import org.dbflute.optional.OptionalEntity;
 import org.dbflute.outsidesql.executor.*;
-import com.apifb.dbflute.allcommon.CDef;
 import com.apifb.dbflute.exbhv.*;
 import com.apifb.dbflute.bsbhv.loader.*;
 import com.apifb.dbflute.exentity.*;
@@ -173,29 +172,29 @@ public abstract class BsWithdrawalReasonBhv extends AbstractBehaviorWritable<Wit
 
     /**
      * Select the entity by the primary-key value.
-     * @param withdrawalReasonCode (退会理由コード): PK, NotNull, CHAR(3), classification=WithdrawalReason. (NotNull)
+     * @param withdrawalReasonCode (退会理由コード): PK, NotNull, CHAR(3). (NotNull)
      * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
      * @throws EntityAlreadyDeletedException When get(), required() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
      * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
-    public OptionalEntity<WithdrawalReason> selectByPK(CDef.WithdrawalReason withdrawalReasonCode) {
+    public OptionalEntity<WithdrawalReason> selectByPK(String withdrawalReasonCode) {
         return facadeSelectByPK(withdrawalReasonCode);
     }
 
-    protected OptionalEntity<WithdrawalReason> facadeSelectByPK(CDef.WithdrawalReason withdrawalReasonCode) {
+    protected OptionalEntity<WithdrawalReason> facadeSelectByPK(String withdrawalReasonCode) {
         return doSelectOptionalByPK(withdrawalReasonCode, typeOfSelectedEntity());
     }
 
-    protected <ENTITY extends WithdrawalReason> ENTITY doSelectByPK(CDef.WithdrawalReason withdrawalReasonCode, Class<? extends ENTITY> tp) {
+    protected <ENTITY extends WithdrawalReason> ENTITY doSelectByPK(String withdrawalReasonCode, Class<? extends ENTITY> tp) {
         return doSelectEntity(xprepareCBAsPK(withdrawalReasonCode), tp);
     }
 
-    protected <ENTITY extends WithdrawalReason> OptionalEntity<ENTITY> doSelectOptionalByPK(CDef.WithdrawalReason withdrawalReasonCode, Class<? extends ENTITY> tp) {
+    protected <ENTITY extends WithdrawalReason> OptionalEntity<ENTITY> doSelectOptionalByPK(String withdrawalReasonCode, Class<? extends ENTITY> tp) {
         return createOptionalEntity(doSelectByPK(withdrawalReasonCode, tp), withdrawalReasonCode);
     }
 
-    protected WithdrawalReasonCB xprepareCBAsPK(CDef.WithdrawalReason withdrawalReasonCode) {
+    protected WithdrawalReasonCB xprepareCBAsPK(String withdrawalReasonCode) {
         assertObjectNotNull("withdrawalReasonCode", withdrawalReasonCode);
         return newConditionBean().acceptPK(withdrawalReasonCode);
     }

@@ -379,7 +379,7 @@ public class BsProductCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnProductCategoryCode() { return doColumn("PRODUCT_CATEGORY_CODE"); }
         /**
-         * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
+         * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnProductStatusCode() { return doColumn("PRODUCT_STATUS_CODE"); }
@@ -581,6 +581,13 @@ public class BsProductCB extends AbstractConditionBean {
      */
     public void orScopeQueryAndPart(AndQuery<ProductCB> andCBLambda) {
         xorSQAP((ProductCB)this, andCBLambda);
+    }
+
+    // ===================================================================================
+    //                                                                       Cursor Select
+    //                                                                       =============
+    public void customizeCursorSelect(SVOptionCall<CursorSelectOption> opLambda) {
+        doAcceptCursorSelectOption(opLambda);
     }
 
     // ===================================================================================

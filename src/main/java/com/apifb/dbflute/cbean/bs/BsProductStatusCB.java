@@ -27,7 +27,6 @@ import org.dbflute.cbean.scoping.*;
 import org.dbflute.dbmeta.DBMetaProvider;
 import org.dbflute.twowaysql.factory.SqlAnalyzerFactory;
 import org.dbflute.twowaysql.style.BoundDateDisplayTimeZoneProvider;
-import com.apifb.dbflute.allcommon.CDef;
 import com.apifb.dbflute.allcommon.DBFluteConfig;
 import com.apifb.dbflute.allcommon.DBMetaInstanceHandler;
 import com.apifb.dbflute.allcommon.ImplementedInvokerAssistant;
@@ -93,13 +92,13 @@ public class BsProductStatusCB extends AbstractConditionBean {
     //                                                                 ===================
     /**
      * Accept the query condition of primary key as equal.
-     * @param productStatusCode (商品ステータスコード): PK, NotNull, CHAR(3), classification=ProductStatus. (NotNull)
+     * @param productStatusCode (商品ステータスコード): PK, NotNull, CHAR(3). (NotNull)
      * @return this. (NotNull)
      */
-    public ProductStatusCB acceptPK(CDef.ProductStatus productStatusCode) {
+    public ProductStatusCB acceptPK(String productStatusCode) {
         assertObjectNotNull("productStatusCode", productStatusCode);
         BsProductStatusCB cb = this;
-        cb.query().setProductStatusCode_Equal_AsProductStatus(productStatusCode);
+        cb.query().setProductStatusCode_Equal(productStatusCode);
         return (ProductStatusCB)this;
     }
 
@@ -308,7 +307,7 @@ public class BsProductStatusCB extends AbstractConditionBean {
                              , HpSDRFunctionFactory sdrFuncFactory)
         { super(baseCB, qyCall, purpose, dbmetaProvider, sdrFuncFactory); }
         /**
-         * (商品ステータスコード)PRODUCT_STATUS_CODE: {PK, NotNull, CHAR(3), classification=ProductStatus}
+         * (商品ステータスコード)PRODUCT_STATUS_CODE: {PK, NotNull, CHAR(3)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnProductStatusCode() { return doColumn("PRODUCT_STATUS_CODE"); }
@@ -442,6 +441,13 @@ public class BsProductStatusCB extends AbstractConditionBean {
      */
     public void orScopeQueryAndPart(AndQuery<ProductStatusCB> andCBLambda) {
         xorSQAP((ProductStatusCB)this, andCBLambda);
+    }
+
+    // ===================================================================================
+    //                                                                       Cursor Select
+    //                                                                       =============
+    public void customizeCursorSelect(SVOptionCall<CursorSelectOption> opLambda) {
+        doAcceptCursorSelectOption(opLambda);
     }
 
     // ===================================================================================

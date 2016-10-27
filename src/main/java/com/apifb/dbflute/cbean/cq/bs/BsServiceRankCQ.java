@@ -110,14 +110,14 @@ public class BsServiceRankCQ extends AbstractBsServiceRankCQ {
 
     /** 
      * Add order-by as ascend. <br>
-     * (サービスランクコード)SERVICE_RANK_CODE: {PK, NotNull, CHAR(3), classification=ServiceRank}
+     * (サービスランクコード)SERVICE_RANK_CODE: {PK, NotNull, CHAR(3)}
      * @return this. (NotNull)
      */
     public BsServiceRankCQ addOrderBy_ServiceRankCode_Asc() { regOBA("SERVICE_RANK_CODE"); return this; }
 
     /**
      * Add order-by as descend. <br>
-     * (サービスランクコード)SERVICE_RANK_CODE: {PK, NotNull, CHAR(3), classification=ServiceRank}
+     * (サービスランクコード)SERVICE_RANK_CODE: {PK, NotNull, CHAR(3)}
      * @return this. (NotNull)
      */
     public BsServiceRankCQ addOrderBy_ServiceRankCode_Desc() { regOBD("SERVICE_RANK_CODE"); return this; }

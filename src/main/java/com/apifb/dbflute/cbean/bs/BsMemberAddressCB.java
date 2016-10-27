@@ -385,7 +385,7 @@ public class BsMemberAddressCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnAddress() { return doColumn("ADDRESS"); }
         /**
-         * (地域ID)REGION_ID: {IX, NotNull, INTEGER(10), FK to REGION, classification=Region}
+         * (地域ID)REGION_ID: {IX, NotNull, INTEGER(10), FK to REGION}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnRegionId() { return doColumn("REGION_ID"); }
@@ -565,6 +565,13 @@ public class BsMemberAddressCB extends AbstractConditionBean {
      */
     public void orScopeQueryAndPart(AndQuery<MemberAddressCB> andCBLambda) {
         xorSQAP((MemberAddressCB)this, andCBLambda);
+    }
+
+    // ===================================================================================
+    //                                                                       Cursor Select
+    //                                                                       =============
+    public void customizeCursorSelect(SVOptionCall<CursorSelectOption> opLambda) {
+        doAcceptCursorSelectOption(opLambda);
     }
 
     // ===================================================================================

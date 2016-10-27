@@ -25,7 +25,6 @@ import org.dbflute.dbmeta.accessory.DomainEntity;
 import org.dbflute.optional.OptionalEntity;
 import com.apifb.dbflute.allcommon.EntityDefinedCommonColumn;
 import com.apifb.dbflute.allcommon.DBMetaInstanceHandler;
-import com.apifb.dbflute.allcommon.CDef;
 import com.apifb.dbflute.exentity.*;
 
 /**
@@ -104,7 +103,7 @@ public abstract class BsMemberService extends AbstractEntity implements DomainEn
     /** (サービスポイント数)SERVICE_POINT_COUNT: {IX, NotNull, INTEGER(10)} */
     protected Integer _servicePointCount;
 
-    /** (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} */
+    /** (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK} */
     protected String _serviceRankCode;
 
     /** REGISTER_DATETIME: {NotNull, TIMESTAMP(23, 10)} */
@@ -153,131 +152,6 @@ public abstract class BsMemberService extends AbstractEntity implements DomainEn
         __uniqueDrivenProperties.clear();
         __uniqueDrivenProperties.addPropertyName("memberId");
         setMemberId(memberId);
-    }
-
-    // ===================================================================================
-    //                                                             Classification Property
-    //                                                             =======================
-    /**
-     * Get the value of serviceRankCode as the classification of ServiceRank. <br>
-     * (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br>
-     * rank of service member gets
-     * <p>It's treated as case insensitive and if the code value is null, it returns null.</p>
-     * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
-     */
-    public CDef.ServiceRank getServiceRankCodeAsServiceRank() {
-        return CDef.ServiceRank.codeOf(getServiceRankCode());
-    }
-
-    /**
-     * Set the value of serviceRankCode as the classification of ServiceRank. <br>
-     * (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br>
-     * rank of service member gets
-     * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the column)
-     */
-    public void setServiceRankCodeAsServiceRank(CDef.ServiceRank cdef) {
-        setServiceRankCode(cdef != null ? cdef.code() : null);
-    }
-
-    // ===================================================================================
-    //                                                              Classification Setting
-    //                                                              ======================
-    /**
-     * Set the value of serviceRankCode as Platinum (PLT). <br>
-     * PLATINUM: platinum rank
-     */
-    public void setServiceRankCode_Platinum() {
-        setServiceRankCodeAsServiceRank(CDef.ServiceRank.Platinum);
-    }
-
-    /**
-     * Set the value of serviceRankCode as Gold (GLD). <br>
-     * GOLD: gold rank
-     */
-    public void setServiceRankCode_Gold() {
-        setServiceRankCodeAsServiceRank(CDef.ServiceRank.Gold);
-    }
-
-    /**
-     * Set the value of serviceRankCode as Silver (SIL). <br>
-     * SILVER: silver rank
-     */
-    public void setServiceRankCode_Silver() {
-        setServiceRankCodeAsServiceRank(CDef.ServiceRank.Silver);
-    }
-
-    /**
-     * Set the value of serviceRankCode as Bronze (BRZ). <br>
-     * BRONZE: bronze rank
-     */
-    public void setServiceRankCode_Bronze() {
-        setServiceRankCodeAsServiceRank(CDef.ServiceRank.Bronze);
-    }
-
-    /**
-     * Set the value of serviceRankCode as Plastic (PLS). <br>
-     * PLASTIC: plastic rank
-     */
-    public void setServiceRankCode_Plastic() {
-        setServiceRankCodeAsServiceRank(CDef.ServiceRank.Plastic);
-    }
-
-    // ===================================================================================
-    //                                                        Classification Determination
-    //                                                        ============================
-    /**
-     * Is the value of serviceRankCode Platinum? <br>
-     * PLATINUM: platinum rank
-     * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
-     * @return The determination, true or false.
-     */
-    public boolean isServiceRankCodePlatinum() {
-        CDef.ServiceRank cdef = getServiceRankCodeAsServiceRank();
-        return cdef != null ? cdef.equals(CDef.ServiceRank.Platinum) : false;
-    }
-
-    /**
-     * Is the value of serviceRankCode Gold? <br>
-     * GOLD: gold rank
-     * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
-     * @return The determination, true or false.
-     */
-    public boolean isServiceRankCodeGold() {
-        CDef.ServiceRank cdef = getServiceRankCodeAsServiceRank();
-        return cdef != null ? cdef.equals(CDef.ServiceRank.Gold) : false;
-    }
-
-    /**
-     * Is the value of serviceRankCode Silver? <br>
-     * SILVER: silver rank
-     * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
-     * @return The determination, true or false.
-     */
-    public boolean isServiceRankCodeSilver() {
-        CDef.ServiceRank cdef = getServiceRankCodeAsServiceRank();
-        return cdef != null ? cdef.equals(CDef.ServiceRank.Silver) : false;
-    }
-
-    /**
-     * Is the value of serviceRankCode Bronze? <br>
-     * BRONZE: bronze rank
-     * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
-     * @return The determination, true or false.
-     */
-    public boolean isServiceRankCodeBronze() {
-        CDef.ServiceRank cdef = getServiceRankCodeAsServiceRank();
-        return cdef != null ? cdef.equals(CDef.ServiceRank.Bronze) : false;
-    }
-
-    /**
-     * Is the value of serviceRankCode Plastic? <br>
-     * PLASTIC: plastic rank
-     * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
-     * @return The determination, true or false.
-     */
-    public boolean isServiceRankCodePlastic() {
-        CDef.ServiceRank cdef = getServiceRankCodeAsServiceRank();
-        return cdef != null ? cdef.equals(CDef.ServiceRank.Plastic) : false;
     }
 
     // ===================================================================================
@@ -468,7 +342,7 @@ public abstract class BsMemberService extends AbstractEntity implements DomainEn
     }
 
     /**
-     * [get] (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br>
+     * [get] (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK} <br>
      * どんなランクがあるのかドキドキですね。
      * @return The value of the column 'SERVICE_RANK_CODE'. (basically NotNull if selected: for the constraint)
      */
@@ -478,12 +352,11 @@ public abstract class BsMemberService extends AbstractEntity implements DomainEn
     }
 
     /**
-     * [set] (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK, classification=ServiceRank} <br>
+     * [set] (サービスランクコード)SERVICE_RANK_CODE: {IX, NotNull, CHAR(3), FK to SERVICE_RANK} <br>
      * どんなランクがあるのかドキドキですね。
      * @param serviceRankCode The value of the column 'SERVICE_RANK_CODE'. (basically NotNull if update: for the constraint)
      */
-    protected void setServiceRankCode(String serviceRankCode) {
-        checkClassificationCode("SERVICE_RANK_CODE", CDef.DefMeta.ServiceRank, serviceRankCode);
+    public void setServiceRankCode(String serviceRankCode) {
         registerModifiedProperty("serviceRankCode");
         _serviceRankCode = serviceRankCode;
     }
@@ -576,13 +449,5 @@ public abstract class BsMemberService extends AbstractEntity implements DomainEn
     public void setVersionNo(Long versionNo) {
         registerModifiedProperty("versionNo");
         _versionNo = versionNo;
-    }
-
-    /**
-     * For framework so basically DON'T use this method.
-     * @param serviceRankCode The value of the column 'SERVICE_RANK_CODE'. (basically NotNull if update: for the constraint)
-     */
-    public void mynativeMappingServiceRankCode(String serviceRankCode) {
-        setServiceRankCode(serviceRankCode);
     }
 }

@@ -27,7 +27,6 @@ import org.dbflute.cbean.scoping.*;
 import org.dbflute.dbmeta.DBMetaProvider;
 import org.dbflute.twowaysql.factory.SqlAnalyzerFactory;
 import org.dbflute.twowaysql.style.BoundDateDisplayTimeZoneProvider;
-import com.apifb.dbflute.allcommon.CDef;
 import com.apifb.dbflute.allcommon.DBFluteConfig;
 import com.apifb.dbflute.allcommon.DBMetaInstanceHandler;
 import com.apifb.dbflute.allcommon.ImplementedInvokerAssistant;
@@ -93,13 +92,13 @@ public class BsWithdrawalReasonCB extends AbstractConditionBean {
     //                                                                 ===================
     /**
      * Accept the query condition of primary key as equal.
-     * @param withdrawalReasonCode (退会理由コード): PK, NotNull, CHAR(3), classification=WithdrawalReason. (NotNull)
+     * @param withdrawalReasonCode (退会理由コード): PK, NotNull, CHAR(3). (NotNull)
      * @return this. (NotNull)
      */
-    public WithdrawalReasonCB acceptPK(CDef.WithdrawalReason withdrawalReasonCode) {
+    public WithdrawalReasonCB acceptPK(String withdrawalReasonCode) {
         assertObjectNotNull("withdrawalReasonCode", withdrawalReasonCode);
         BsWithdrawalReasonCB cb = this;
-        cb.query().setWithdrawalReasonCode_Equal_AsWithdrawalReason(withdrawalReasonCode);
+        cb.query().setWithdrawalReasonCode_Equal(withdrawalReasonCode);
         return (WithdrawalReasonCB)this;
     }
 
@@ -308,7 +307,7 @@ public class BsWithdrawalReasonCB extends AbstractConditionBean {
                              , HpSDRFunctionFactory sdrFuncFactory)
         { super(baseCB, qyCall, purpose, dbmetaProvider, sdrFuncFactory); }
         /**
-         * (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3), classification=WithdrawalReason}
+         * (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnWithdrawalReasonCode() { return doColumn("WITHDRAWAL_REASON_CODE"); }
@@ -442,6 +441,13 @@ public class BsWithdrawalReasonCB extends AbstractConditionBean {
      */
     public void orScopeQueryAndPart(AndQuery<WithdrawalReasonCB> andCBLambda) {
         xorSQAP((WithdrawalReasonCB)this, andCBLambda);
+    }
+
+    // ===================================================================================
+    //                                                                       Cursor Select
+    //                                                                       =============
+    public void customizeCursorSelect(SVOptionCall<CursorSelectOption> opLambda) {
+        doAcceptCursorSelectOption(opLambda);
     }
 
     // ===================================================================================

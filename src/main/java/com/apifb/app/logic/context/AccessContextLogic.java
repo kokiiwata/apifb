@@ -74,4 +74,5 @@ public class AccessContextLogic {
         final int columnSize = 200; // is same as e.g. REGISTER_USER
         return trace.length() > columnSize ? trace.substring(0, columnSize) : trace;
     }
+
 }

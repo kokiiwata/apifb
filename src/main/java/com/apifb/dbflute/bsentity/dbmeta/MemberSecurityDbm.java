@@ -90,7 +90,7 @@ public class MemberSecurityDbm extends AbstractDBMeta {
     protected final String _tableDbName = "MEMBER_SECURITY";
     protected final String _tableDispName = "MEMBER_SECURITY";
     protected final String _tablePropertyName = "memberSecurity";
-    protected final TableSqlName _tableSqlName = new TableSqlName("MEMBER_SECURITY", _tableDbName);
+    protected final TableSqlName _tableSqlName = new TableSqlName("MAIHAMADB.PUBLIC.MEMBER_SECURITY", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
     public String getTableDispName() { return _tableDispName; }

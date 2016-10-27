@@ -28,7 +28,6 @@ import org.dbflute.cbean.result.*;
 import org.dbflute.exception.*;
 import org.dbflute.optional.OptionalEntity;
 import org.dbflute.outsidesql.executor.*;
-import com.apifb.dbflute.allcommon.CDef;
 import com.apifb.dbflute.exbhv.*;
 import com.apifb.dbflute.bsbhv.loader.*;
 import com.apifb.dbflute.exentity.*;
@@ -173,29 +172,29 @@ public abstract class BsRegionBhv extends AbstractBehaviorWritable<Region, Regio
 
     /**
      * Select the entity by the primary-key value.
-     * @param regionId (地域ID): PK, NotNull, INTEGER(10), classification=Region. (NotNull)
+     * @param regionId (地域ID): PK, NotNull, INTEGER(10). (NotNull)
      * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
      * @throws EntityAlreadyDeletedException When get(), required() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
      * @throws SelectEntityConditionNotFoundException When the condition for selecting an entity is not found.
      */
-    public OptionalEntity<Region> selectByPK(CDef.Region regionId) {
+    public OptionalEntity<Region> selectByPK(Integer regionId) {
         return facadeSelectByPK(regionId);
     }
 
-    protected OptionalEntity<Region> facadeSelectByPK(CDef.Region regionId) {
+    protected OptionalEntity<Region> facadeSelectByPK(Integer regionId) {
         return doSelectOptionalByPK(regionId, typeOfSelectedEntity());
     }
 
-    protected <ENTITY extends Region> ENTITY doSelectByPK(CDef.Region regionId, Class<? extends ENTITY> tp) {
+    protected <ENTITY extends Region> ENTITY doSelectByPK(Integer regionId, Class<? extends ENTITY> tp) {
         return doSelectEntity(xprepareCBAsPK(regionId), tp);
     }
 
-    protected <ENTITY extends Region> OptionalEntity<ENTITY> doSelectOptionalByPK(CDef.Region regionId, Class<? extends ENTITY> tp) {
+    protected <ENTITY extends Region> OptionalEntity<ENTITY> doSelectOptionalByPK(Integer regionId, Class<? extends ENTITY> tp) {
         return createOptionalEntity(doSelectByPK(regionId, tp), regionId);
     }
 
-    protected RegionCB xprepareCBAsPK(CDef.Region regionId) {
+    protected RegionCB xprepareCBAsPK(Integer regionId) {
         assertObjectNotNull("regionId", regionId);
         return newConditionBean().acceptPK(regionId);
     }

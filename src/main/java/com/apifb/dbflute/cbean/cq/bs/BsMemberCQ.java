@@ -166,14 +166,14 @@ public class BsMemberCQ extends AbstractBsMemberCQ {
 
     /** 
      * Add order-by as ascend. <br>
-     * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
+     * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10)}
      * @return this. (NotNull)
      */
     public BsMemberCQ addOrderBy_MemberId_Asc() { regOBA("MEMBER_ID"); return this; }
 
     /**
      * Add order-by as descend. <br>
-     * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS}
+     * (会員ID)MEMBER_ID: {PK, ID, NotNull, INTEGER(10)}
      * @return this. (NotNull)
      */
     public BsMemberCQ addOrderBy_MemberId_Desc() { regOBD("MEMBER_ID"); return this; }
@@ -422,13 +422,6 @@ public class BsMemberCQ extends AbstractBsMemberCQ {
         if (bq.hasConditionQueryMemberStatus()) {
             uq.queryMemberStatus().reflectRelationOnUnionQuery(bq.queryMemberStatus(), uq.queryMemberStatus());
         }
-        if (bq.hasConditionQueryMemberAddressAsValid()) {
-            uq.xsetParameterMapMemberAddressAsValid(bq.xdfgetParameterMapMemberAddressAsValid());
-            uq.xdfgetConditionQueryMemberAddressAsValid().reflectRelationOnUnionQuery(bq.xdfgetConditionQueryMemberAddressAsValid(), uq.xdfgetConditionQueryMemberAddressAsValid());
-        }
-        if (bq.hasConditionQueryMemberLoginAsLatest()) {
-            uq.queryMemberLoginAsLatest().reflectRelationOnUnionQuery(bq.queryMemberLoginAsLatest(), uq.queryMemberLoginAsLatest());
-        }
         if (bq.hasConditionQueryMemberSecurityAsOne()) {
             uq.queryMemberSecurityAsOne().reflectRelationOnUnionQuery(bq.queryMemberSecurityAsOne(), uq.queryMemberSecurityAsOne());
         }
@@ -462,57 +455,6 @@ public class BsMemberCQ extends AbstractBsMemberCQ {
     }
     protected void xsetupOuterJoinMemberStatus() { xregOutJo("memberStatus"); }
     public boolean hasConditionQueryMemberStatus() { return xhasQueRlMap("memberStatus"); }
-
-    /**
-     * Get the condition-query for relation table. <br>
-     * (会員住所情報)MEMBER_ADDRESS by my MEMBER_ID, named 'memberAddressAsValid'. <br>
-     * Member's address at the target date.
-     * @param targetDate The bind parameter of fixed condition for targetDate. (NotNull)
-     * @return The instance of condition-query. (NotNull)
-     */
-    public MemberAddressCQ queryMemberAddressAsValid(java.time.LocalDate targetDate) {
-        Map<String, Object> parameterMap = xdfgetParameterMapMemberAddressAsValid();
-        parameterMap.put("targetDate", targetDate);
-        xassertFCDP("memberAddressAsValid", parameterMap);
-        return xdfgetConditionQueryMemberAddressAsValid();
-    }
-    public MemberAddressCQ xdfgetConditionQueryMemberAddressAsValid() {
-        String prop = "memberAddressAsValid";
-        if (!xhasQueRlMap(prop)) { xregQueRl(prop, xcreateQueryMemberAddressAsValid()); xsetupOuterJoinMemberAddressAsValid(); }
-        return xgetQueRlMap(prop);
-    }
-    protected Map<String, Object> _parameterMapMemberAddressAsValid;
-    public Map<String, Object> xdfgetParameterMapMemberAddressAsValid()
-    { if (_parameterMapMemberAddressAsValid == null) { _parameterMapMemberAddressAsValid = newLinkedHashMapSized(4); }
-      return _parameterMapMemberAddressAsValid; }
-    public void xsetParameterMapMemberAddressAsValid(Map<String, Object> parameterMap)
-    { _parameterMapMemberAddressAsValid = parameterMap; } // for UnionQuery
-    protected MemberAddressCQ xcreateQueryMemberAddressAsValid() {
-        String nrp = xresolveNRP("MEMBER", "memberAddressAsValid"); String jan = xresolveJAN(nrp, xgetNNLvl());
-        return xinitRelCQ(new MemberAddressCQ(this, xgetSqlClause(), jan, xgetNNLvl()), _baseCB, "memberAddressAsValid", nrp);
-    }
-    protected void xsetupOuterJoinMemberAddressAsValid() { xregOutJo("memberAddressAsValid"); }
-    public boolean hasConditionQueryMemberAddressAsValid() { return xhasQueRlMap("memberAddressAsValid"); }
-
-    /**
-     * Get the condition-query for relation table. <br>
-     * (会員ログイン)MEMBER_LOGIN by my MEMBER_ID, named 'memberLoginAsLatest'.
-     * @return The instance of condition-query. (NotNull)
-     */
-    public MemberLoginCQ queryMemberLoginAsLatest() {
-        return xdfgetConditionQueryMemberLoginAsLatest();
-    }
-    public MemberLoginCQ xdfgetConditionQueryMemberLoginAsLatest() {
-        String prop = "memberLoginAsLatest";
-        if (!xhasQueRlMap(prop)) { xregQueRl(prop, xcreateQueryMemberLoginAsLatest()); xsetupOuterJoinMemberLoginAsLatest(); }
-        return xgetQueRlMap(prop);
-    }
-    protected MemberLoginCQ xcreateQueryMemberLoginAsLatest() {
-        String nrp = xresolveNRP("MEMBER", "memberLoginAsLatest"); String jan = xresolveJAN(nrp, xgetNNLvl());
-        return xinitRelCQ(new MemberLoginCQ(this, xgetSqlClause(), jan, xgetNNLvl()), _baseCB, "memberLoginAsLatest", nrp);
-    }
-    protected void xsetupOuterJoinMemberLoginAsLatest() { xregOutJo("memberLoginAsLatest"); }
-    public boolean hasConditionQueryMemberLoginAsLatest() { return xhasQueRlMap("memberLoginAsLatest"); }
 
     /**
      * Get the condition-query for relation table. <br>
@@ -569,7 +511,6 @@ public class BsMemberCQ extends AbstractBsMemberCQ {
     public boolean hasConditionQueryMemberWithdrawalAsOne() { return xhasQueRlMap("memberWithdrawalAsOne"); }
 
     protected Map<String, Object> xfindFixedConditionDynamicParameterMap(String property) {
-        if ("memberAddressAsValid".equalsIgnoreCase(property)) { return _parameterMapMemberAddressAsValid; }
         return null;
     }
 

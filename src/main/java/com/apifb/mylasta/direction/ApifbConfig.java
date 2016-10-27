@@ -39,7 +39,7 @@ public interface ApifbConfig extends ApifbEnv {
     String COOKIE_ETERNAL_EXPIRE = "cookie.eternal.expire";
 
     /** The key of the configuration. e.g. HRB */
-    String COOKIE_REMEMBER_ME_HARBOR_KEY = "cookie.remember.me.apifb.key";
+    String COOKIE_REMEMBER_ME_APIFB_KEY = "cookie.remember.me.apifb.key";
 
     /**
      * Get the value of property as {@link String}.
@@ -161,7 +161,7 @@ public interface ApifbConfig extends ApifbEnv {
         }
 
         public String getCookieRememberMeApifbKey() {
-            return get(ApifbConfig.COOKIE_REMEMBER_ME_HARBOR_KEY);
+            return get(ApifbConfig.COOKIE_REMEMBER_ME_APIFB_KEY);
         }
     }
 }

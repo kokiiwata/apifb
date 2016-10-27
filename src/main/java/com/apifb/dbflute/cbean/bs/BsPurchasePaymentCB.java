@@ -346,7 +346,7 @@ public class BsPurchasePaymentCB extends AbstractConditionBean {
          */
         public SpecifiedColumn columnPaymentDatetime() { return doColumn("PAYMENT_DATETIME"); }
         /**
-         * (支払方法コード)PAYMENT_METHOD_CODE: {NotNull, CHAR(3), classification=PaymentMethod}
+         * (支払方法コード)PAYMENT_METHOD_CODE: {NotNull, CHAR(3)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnPaymentMethodCode() { return doColumn("PAYMENT_METHOD_CODE"); }
@@ -497,6 +497,13 @@ public class BsPurchasePaymentCB extends AbstractConditionBean {
      */
     public void orScopeQueryAndPart(AndQuery<PurchasePaymentCB> andCBLambda) {
         xorSQAP((PurchasePaymentCB)this, andCBLambda);
+    }
+
+    // ===================================================================================
+    //                                                                       Cursor Select
+    //                                                                       =============
+    public void customizeCursorSelect(SVOptionCall<CursorSelectOption> opLambda) {
+        doAcceptCursorSelectOption(opLambda);
     }
 
     // ===================================================================================

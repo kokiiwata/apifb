@@ -26,45 +26,15 @@ public interface ApifbHtmlPath {
     /** The path of the HTML: /error/show_errors.html */
     HtmlNext path_Error_ShowErrorsHtml = new HtmlNext("/error/show_errors.html");
 
-    /** The path of the HTML: /member/member_add.html */
-    HtmlNext path_Member_MemberAddHtml = new HtmlNext("/member/member_add.html");
-
-    /** The path of the HTML: /member/member_edit.html */
-    HtmlNext path_Member_MemberEditHtml = new HtmlNext("/member/member_edit.html");
-
-    /** The path of the HTML: /member/member_list.html */
-    HtmlNext path_Member_MemberListHtml = new HtmlNext("/member/member_list.html");
-
     /** The path of the HTML: /mypage/mypage.html */
     HtmlNext path_Mypage_MypageHtml = new HtmlNext("/mypage/mypage.html");
 
-    /** The path of the HTML: /product/product_detail.html */
-    HtmlNext path_Product_ProductDetailHtml = new HtmlNext("/product/product_detail.html");
-
-    /** The path of the HTML: /product/product_list.html */
-    HtmlNext path_Product_ProductListHtml = new HtmlNext("/product/product_list.html");
-
-    /** The path of the HTML: /profile/profile.html */
-    HtmlNext path_Profile_ProfileHtml = new HtmlNext("/profile/profile.html");
-
-    /** The path of the HTML: /sea/sea_land.html */
-    HtmlNext path_Sea_SeaLandHtml = new HtmlNext("/sea/sea_land.html");
+    /** The path of the HTML: /register/Register.html */
+    HtmlNext path_Register_RegisterHtml = new HtmlNext("/register/Register.html");
 
     /** The path of the HTML: /signin/signin.html */
     HtmlNext path_Signin_SigninHtml = new HtmlNext("/signin/signin.html");
 
     /** The path of the HTML: /signin/signin_reminder.html */
     HtmlNext path_Signin_SigninReminderHtml = new HtmlNext("/signin/signin_reminder.html");
-
-    /** The path of the HTML: /signup/signup.html */
-    HtmlNext path_Signup_SignupHtml = new HtmlNext("/signup/signup.html");
-
-    /** The path of the HTML: /startup/startup.html */
-    HtmlNext path_Startup_StartupHtml = new HtmlNext("/startup/startup.html");
-
-    /** The path of the HTML: /withdrawal/withdrawal_confirm.html */
-    HtmlNext path_Withdrawal_WithdrawalConfirmHtml = new HtmlNext("/withdrawal/withdrawal_confirm.html");
-
-    /** The path of the HTML: /withdrawal/withdrawal_entry.html */
-    HtmlNext path_Withdrawal_WithdrawalEntryHtml = new HtmlNext("/withdrawal/withdrawal_entry.html");
 }

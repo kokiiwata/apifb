@@ -467,6 +467,13 @@ public class BsMemberStatusCB extends AbstractConditionBean {
     }
 
     // ===================================================================================
+    //                                                                       Cursor Select
+    //                                                                       =============
+    public void customizeCursorSelect(SVOptionCall<CursorSelectOption> opLambda) {
+        doAcceptCursorSelectOption(opLambda);
+    }
+
+    // ===================================================================================
     //                                                                          DisplaySQL
     //                                                                          ==========
     @Override

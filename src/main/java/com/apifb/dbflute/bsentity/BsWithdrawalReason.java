@@ -22,7 +22,6 @@ import org.dbflute.dbmeta.DBMeta;
 import org.dbflute.dbmeta.AbstractEntity;
 import org.dbflute.dbmeta.accessory.DomainEntity;
 import com.apifb.dbflute.allcommon.DBMetaInstanceHandler;
-import com.apifb.dbflute.allcommon.CDef;
 import com.apifb.dbflute.exentity.*;
 
 /**
@@ -79,7 +78,7 @@ public abstract class BsWithdrawalReason extends AbstractEntity implements Domai
     // ===================================================================================
     //                                                                           Attribute
     //                                                                           =========
-    /** (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3), classification=WithdrawalReason} */
+    /** (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3)} */
     protected String _withdrawalReasonCode;
 
     /** (退会理由テキスト)WITHDRAWAL_REASON_TEXT: {NotNull, CLOB(2147483647)} */
@@ -119,112 +118,6 @@ public abstract class BsWithdrawalReason extends AbstractEntity implements Domai
         __uniqueDrivenProperties.clear();
         __uniqueDrivenProperties.addPropertyName("displayOrder");
         setDisplayOrder(displayOrder);
-    }
-
-    // ===================================================================================
-    //                                                             Classification Property
-    //                                                             =======================
-    /**
-     * Get the value of withdrawalReasonCode as the classification of WithdrawalReason. <br>
-     * (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3), classification=WithdrawalReason} <br>
-     * reason for member withdrawal
-     * <p>It's treated as case insensitive and if the code value is null, it returns null.</p>
-     * @return The instance of classification definition (as ENUM type). (NullAllowed: when the column value is null)
-     */
-    public CDef.WithdrawalReason getWithdrawalReasonCodeAsWithdrawalReason() {
-        return CDef.WithdrawalReason.codeOf(getWithdrawalReasonCode());
-    }
-
-    /**
-     * Set the value of withdrawalReasonCode as the classification of WithdrawalReason. <br>
-     * (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3), classification=WithdrawalReason} <br>
-     * reason for member withdrawal
-     * @param cdef The instance of classification definition (as ENUM type). (NullAllowed: if null, null value is set to the column)
-     */
-    public void setWithdrawalReasonCodeAsWithdrawalReason(CDef.WithdrawalReason cdef) {
-        setWithdrawalReasonCode(cdef != null ? cdef.code() : null);
-    }
-
-    // ===================================================================================
-    //                                                              Classification Setting
-    //                                                              ======================
-    /**
-     * Set the value of withdrawalReasonCode as Sit (SIT). <br>
-     * SIT: site is not kindness
-     */
-    public void setWithdrawalReasonCode_Sit() {
-        setWithdrawalReasonCodeAsWithdrawalReason(CDef.WithdrawalReason.Sit);
-    }
-
-    /**
-     * Set the value of withdrawalReasonCode as Prd (PRD). <br>
-     * PRD: no attractive product
-     */
-    public void setWithdrawalReasonCode_Prd() {
-        setWithdrawalReasonCodeAsWithdrawalReason(CDef.WithdrawalReason.Prd);
-    }
-
-    /**
-     * Set the value of withdrawalReasonCode as Frt (FRT). <br>
-     * FRT: because of furiten
-     */
-    public void setWithdrawalReasonCode_Frt() {
-        setWithdrawalReasonCodeAsWithdrawalReason(CDef.WithdrawalReason.Frt);
-    }
-
-    /**
-     * Set the value of withdrawalReasonCode as Oth (OTH). <br>
-     * OTH: other reasons
-     */
-    public void setWithdrawalReasonCode_Oth() {
-        setWithdrawalReasonCodeAsWithdrawalReason(CDef.WithdrawalReason.Oth);
-    }
-
-    // ===================================================================================
-    //                                                        Classification Determination
-    //                                                        ============================
-    /**
-     * Is the value of withdrawalReasonCode Sit? <br>
-     * SIT: site is not kindness
-     * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
-     * @return The determination, true or false.
-     */
-    public boolean isWithdrawalReasonCodeSit() {
-        CDef.WithdrawalReason cdef = getWithdrawalReasonCodeAsWithdrawalReason();
-        return cdef != null ? cdef.equals(CDef.WithdrawalReason.Sit) : false;
-    }
-
-    /**
-     * Is the value of withdrawalReasonCode Prd? <br>
-     * PRD: no attractive product
-     * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
-     * @return The determination, true or false.
-     */
-    public boolean isWithdrawalReasonCodePrd() {
-        CDef.WithdrawalReason cdef = getWithdrawalReasonCodeAsWithdrawalReason();
-        return cdef != null ? cdef.equals(CDef.WithdrawalReason.Prd) : false;
-    }
-
-    /**
-     * Is the value of withdrawalReasonCode Frt? <br>
-     * FRT: because of furiten
-     * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
-     * @return The determination, true or false.
-     */
-    public boolean isWithdrawalReasonCodeFrt() {
-        CDef.WithdrawalReason cdef = getWithdrawalReasonCodeAsWithdrawalReason();
-        return cdef != null ? cdef.equals(CDef.WithdrawalReason.Frt) : false;
-    }
-
-    /**
-     * Is the value of withdrawalReasonCode Oth? <br>
-     * OTH: other reasons
-     * <p>It's treated as case insensitive and if the code value is null, it returns false.</p>
-     * @return The determination, true or false.
-     */
-    public boolean isWithdrawalReasonCodeOth() {
-        CDef.WithdrawalReason cdef = getWithdrawalReasonCodeAsWithdrawalReason();
-        return cdef != null ? cdef.equals(CDef.WithdrawalReason.Oth) : false;
     }
 
     // ===================================================================================
@@ -320,7 +213,7 @@ public abstract class BsWithdrawalReason extends AbstractEntity implements Domai
     //                                                                            Accessor
     //                                                                            ========
     /**
-     * [get] (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3), classification=WithdrawalReason} <br>
+     * [get] (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3)} <br>
      * @return The value of the column 'WITHDRAWAL_REASON_CODE'. (basically NotNull if selected: for the constraint)
      */
     public String getWithdrawalReasonCode() {
@@ -329,11 +222,10 @@ public abstract class BsWithdrawalReason extends AbstractEntity implements Domai
     }
 
     /**
-     * [set] (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3), classification=WithdrawalReason} <br>
+     * [set] (退会理由コード)WITHDRAWAL_REASON_CODE: {PK, NotNull, CHAR(3)} <br>
      * @param withdrawalReasonCode The value of the column 'WITHDRAWAL_REASON_CODE'. (basically NotNull if update: for the constraint)
      */
-    protected void setWithdrawalReasonCode(String withdrawalReasonCode) {
-        checkClassificationCode("WITHDRAWAL_REASON_CODE", CDef.DefMeta.WithdrawalReason, withdrawalReasonCode);
+    public void setWithdrawalReasonCode(String withdrawalReasonCode) {
         registerModifiedProperty("withdrawalReasonCode");
         _withdrawalReasonCode = withdrawalReasonCode;
     }
@@ -376,13 +268,5 @@ public abstract class BsWithdrawalReason extends AbstractEntity implements Domai
     public void setDisplayOrder(Integer displayOrder) {
         registerModifiedProperty("displayOrder");
         _displayOrder = displayOrder;
-    }
-
-    /**
-     * For framework so basically DON'T use this method.
-     * @param withdrawalReasonCode The value of the column 'WITHDRAWAL_REASON_CODE'. (basically NotNull if update: for the constraint)
-     */
-    public void mynativeMappingWithdrawalReasonCode(String withdrawalReasonCode) {
-        setWithdrawalReasonCode(withdrawalReasonCode);
     }
 }

@@ -42,13 +42,13 @@ import com.apifb.dbflute.cbean.*;
  *     VERSION_NO
  *
  * [foreign table]
- *     MEMBER_STATUS, MEMBER_ADDRESS(AsValid), MEMBER_LOGIN(AsLatest), MEMBER_SECURITY(AsOne), MEMBER_SERVICE(AsOne), MEMBER_WITHDRAWAL(AsOne)
+ *     MEMBER_STATUS, MEMBER_SECURITY(AsOne), MEMBER_SERVICE(AsOne), MEMBER_WITHDRAWAL(AsOne)
  *
  * [referrer table]
  *     MEMBER_ADDRESS, MEMBER_FOLLOWING, MEMBER_LOGIN, PURCHASE, MEMBER_SECURITY, MEMBER_SERVICE, MEMBER_WITHDRAWAL
  *
  * [foreign property]
- *     memberStatus, memberAddressAsValid, memberLoginAsLatest, memberSecurityAsOne, memberServiceAsOne, memberWithdrawalAsOne
+ *     memberStatus, memberSecurityAsOne, memberServiceAsOne, memberWithdrawalAsOne
  *
  * [referrer property]
  *     memberAddressList, memberFollowingByMyMemberIdList, memberFollowingByYourMemberIdList, memberLoginList, purchaseList
@@ -254,20 +254,6 @@ public class LoaderOfMember {
         if (_foreignMemberStatusLoader == null)
         { _foreignMemberStatusLoader = new LoaderOfMemberStatus().ready(myBhv().pulloutMemberStatus(_selectedList), _selector); }
         return _foreignMemberStatusLoader;
-    }
-
-    protected LoaderOfMemberAddress _foreignMemberAddressAsValidLoader;
-    public LoaderOfMemberAddress pulloutMemberAddressAsValid() {
-        if (_foreignMemberAddressAsValidLoader == null)
-        { _foreignMemberAddressAsValidLoader = new LoaderOfMemberAddress().ready(myBhv().pulloutMemberAddressAsValid(_selectedList), _selector); }
-        return _foreignMemberAddressAsValidLoader;
-    }
-
-    protected LoaderOfMemberLogin _foreignMemberLoginAsLatestLoader;
-    public LoaderOfMemberLogin pulloutMemberLoginAsLatest() {
-        if (_foreignMemberLoginAsLatestLoader == null)
-        { _foreignMemberLoginAsLatestLoader = new LoaderOfMemberLogin().ready(myBhv().pulloutMemberLoginAsLatest(_selectedList), _selector); }
-        return _foreignMemberLoginAsLatestLoader;
     }
 
     protected LoaderOfMemberSecurity _foreignMemberSecurityAsOneLoader;

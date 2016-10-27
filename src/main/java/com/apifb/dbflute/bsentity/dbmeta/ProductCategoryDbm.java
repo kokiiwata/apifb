@@ -83,7 +83,7 @@ public class ProductCategoryDbm extends AbstractDBMeta {
     protected final String _tableDbName = "PRODUCT_CATEGORY";
     protected final String _tableDispName = "PRODUCT_CATEGORY";
     protected final String _tablePropertyName = "productCategory";
-    protected final TableSqlName _tableSqlName = new TableSqlName("PRODUCT_CATEGORY", _tableDbName);
+    protected final TableSqlName _tableSqlName = new TableSqlName("MAIHAMADB.PUBLIC.PRODUCT_CATEGORY", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
     public String getTableDispName() { return _tableDispName; }

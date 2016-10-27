@@ -520,45 +520,11 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
 
     /**
      * Equal(=). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS}
      * @param productStatusCode The value of productStatusCode as equal. (NullAllowed: if null (or empty), no condition)
      */
-    protected void setProductStatusCode_Equal(String productStatusCode) {
+    public void setProductStatusCode_Equal(String productStatusCode) {
         doSetProductStatusCode_Equal(fRES(productStatusCode));
-    }
-
-    /**
-     * Equal(=). As ProductStatus. And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
-     * status for product
-     * @param cdef The instance of classification definition (as ENUM type). (basically NotNull: error as default, or no condition as option)
-     */
-    public void setProductStatusCode_Equal_AsProductStatus(CDef.ProductStatus cdef) {
-        doSetProductStatusCode_Equal(cdef != null ? cdef.code() : null);
-    }
-
-    /**
-     * Equal(=). As OnSaleProduction (ONS). And OnlyOnceRegistered. <br>
-     * OnSaleProduction
-     */
-    public void setProductStatusCode_Equal_OnSaleProduction() {
-        setProductStatusCode_Equal_AsProductStatus(CDef.ProductStatus.OnSaleProduction);
-    }
-
-    /**
-     * Equal(=). As ProductionStop (PST). And OnlyOnceRegistered. <br>
-     * ProductionStop
-     */
-    public void setProductStatusCode_Equal_ProductionStop() {
-        setProductStatusCode_Equal_AsProductStatus(CDef.ProductStatus.ProductionStop);
-    }
-
-    /**
-     * Equal(=). As SaleStop (SST). And OnlyOnceRegistered. <br>
-     * SaleStop
-     */
-    public void setProductStatusCode_Equal_SaleStop() {
-        setProductStatusCode_Equal_AsProductStatus(CDef.ProductStatus.SaleStop);
     }
 
     protected void doSetProductStatusCode_Equal(String productStatusCode) {
@@ -567,45 +533,11 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
 
     /**
      * NotEqual(&lt;&gt;). And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS}
      * @param productStatusCode The value of productStatusCode as notEqual. (NullAllowed: if null (or empty), no condition)
      */
-    protected void setProductStatusCode_NotEqual(String productStatusCode) {
+    public void setProductStatusCode_NotEqual(String productStatusCode) {
         doSetProductStatusCode_NotEqual(fRES(productStatusCode));
-    }
-
-    /**
-     * NotEqual(&lt;&gt;). As ProductStatus. And NullOrEmptyIgnored, OnlyOnceRegistered. <br>
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
-     * status for product
-     * @param cdef The instance of classification definition (as ENUM type). (basically NotNull: error as default, or no condition as option)
-     */
-    public void setProductStatusCode_NotEqual_AsProductStatus(CDef.ProductStatus cdef) {
-        doSetProductStatusCode_NotEqual(cdef != null ? cdef.code() : null);
-    }
-
-    /**
-     * NotEqual(&lt;&gt;). As OnSaleProduction (ONS). And OnlyOnceRegistered. <br>
-     * OnSaleProduction
-     */
-    public void setProductStatusCode_NotEqual_OnSaleProduction() {
-        setProductStatusCode_NotEqual_AsProductStatus(CDef.ProductStatus.OnSaleProduction);
-    }
-
-    /**
-     * NotEqual(&lt;&gt;). As ProductionStop (PST). And OnlyOnceRegistered. <br>
-     * ProductionStop
-     */
-    public void setProductStatusCode_NotEqual_ProductionStop() {
-        setProductStatusCode_NotEqual_AsProductStatus(CDef.ProductStatus.ProductionStop);
-    }
-
-    /**
-     * NotEqual(&lt;&gt;). As SaleStop (SST). And OnlyOnceRegistered. <br>
-     * SaleStop
-     */
-    public void setProductStatusCode_NotEqual_SaleStop() {
-        setProductStatusCode_NotEqual_AsProductStatus(CDef.ProductStatus.SaleStop);
     }
 
     protected void doSetProductStatusCode_NotEqual(String productStatusCode) {
@@ -614,21 +546,11 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
 
     /**
      * InScope {in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS}
      * @param productStatusCodeList The collection of productStatusCode as inScope. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductStatusCode_InScope(Collection<String> productStatusCodeList) {
         doSetProductStatusCode_InScope(productStatusCodeList);
-    }
-
-    /**
-     * InScope {in ('a', 'b')}. As ProductStatus. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
-     * status for product
-     * @param cdefList The list of classification definition (as ENUM type). (NullAllowed: if null (or empty), no condition)
-     */
-    public void setProductStatusCode_InScope_AsProductStatus(Collection<CDef.ProductStatus> cdefList) {
-        doSetProductStatusCode_InScope(cTStrL(cdefList));
     }
 
     protected void doSetProductStatusCode_InScope(Collection<String> productStatusCodeList) {
@@ -637,25 +559,59 @@ public abstract class AbstractBsProductCQ extends AbstractConditionQuery {
 
     /**
      * NotInScope {not in ('a', 'b')}. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus}
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS}
      * @param productStatusCodeList The collection of productStatusCode as notInScope. (NullAllowed: if null (or empty), no condition)
      */
     public void setProductStatusCode_NotInScope(Collection<String> productStatusCodeList) {
         doSetProductStatusCode_NotInScope(productStatusCodeList);
     }
 
-    /**
-     * NotInScope {not in ('a', 'b')}. As ProductStatus. And NullOrEmptyIgnored, NullOrEmptyElementIgnored, SeveralRegistered. <br>
-     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS, classification=ProductStatus} <br>
-     * status for product
-     * @param cdefList The list of classification definition (as ENUM type). (NullAllowed: if null (or empty), no condition)
-     */
-    public void setProductStatusCode_NotInScope_AsProductStatus(Collection<CDef.ProductStatus> cdefList) {
-        doSetProductStatusCode_NotInScope(cTStrL(cdefList));
-    }
-
     protected void doSetProductStatusCode_NotInScope(Collection<String> productStatusCodeList) {
         regINS(CK_NINS, cTL(productStatusCodeList), xgetCValueProductStatusCode(), "PRODUCT_STATUS_CODE");
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS} <br>
+     * <pre>e.g. setProductStatusCode_LikeSearch("xxx", op <span style="color: #90226C; font-weight: bold"><span style="font-size: 120%">-</span>&gt;</span> op.<span style="color: #CC4747">likeContain()</span>);</pre>
+     * @param productStatusCode The value of productStatusCode as likeSearch. (NullAllowed: if null (or empty), no condition)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductStatusCode_LikeSearch(String productStatusCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductStatusCode_LikeSearch(productStatusCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * LikeSearch with various options. (versatile) {like '%xxx%' escape ...}. And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS} <br>
+     * <pre>e.g. setProductStatusCode_LikeSearch("xxx", new <span style="color: #CC4747">LikeSearchOption</span>().likeContain());</pre>
+     * @param productStatusCode The value of productStatusCode as likeSearch. (NullAllowed: if null (or empty), no condition)
+     * @param likeSearchOption The option of like-search. (NotNull)
+     */
+    protected void setProductStatusCode_LikeSearch(String productStatusCode, LikeSearchOption likeSearchOption) {
+        regLSQ(CK_LS, fRES(productStatusCode), xgetCValueProductStatusCode(), "PRODUCT_STATUS_CODE", likeSearchOption);
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS}
+     * @param productStatusCode The value of productStatusCode as notLikeSearch. (NullAllowed: if null (or empty), no condition)
+     * @param opLambda The callback for option of like-search. (NotNull)
+     */
+    public void setProductStatusCode_NotLikeSearch(String productStatusCode, ConditionOptionCall<LikeSearchOption> opLambda) {
+        setProductStatusCode_NotLikeSearch(productStatusCode, xcLSOP(opLambda));
+    }
+
+    /**
+     * NotLikeSearch with various options. (versatile) {not like 'xxx%' escape ...} <br>
+     * And NullOrEmptyIgnored, SeveralRegistered. <br>
+     * PRODUCT_STATUS_CODE: {IX, NotNull, CHAR(3), FK to PRODUCT_STATUS}
+     * @param productStatusCode The value of productStatusCode as notLikeSearch. (NullAllowed: if null (or empty), no condition)
+     * @param likeSearchOption The option of not-like-search. (NotNull)
+     */
+    protected void setProductStatusCode_NotLikeSearch(String productStatusCode, LikeSearchOption likeSearchOption) {
+        regLSQ(CK_NLS, fRES(productStatusCode), xgetCValueProductStatusCode(), "PRODUCT_STATUS_CODE", likeSearchOption);
     }
 
     protected void regProductStatusCode(ConditionKey ky, Object vl) { regQ(ky, vl, xgetCValueProductStatusCode(), "PRODUCT_STATUS_CODE"); }

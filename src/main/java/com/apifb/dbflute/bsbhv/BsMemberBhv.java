@@ -53,13 +53,13 @@ import com.apifb.dbflute.cbean.*;
  *     VERSION_NO
  *
  * [foreign table]
- *     MEMBER_STATUS, MEMBER_ADDRESS(AsValid), MEMBER_LOGIN(AsLatest), MEMBER_SECURITY(AsOne), MEMBER_SERVICE(AsOne), MEMBER_WITHDRAWAL(AsOne)
+ *     MEMBER_STATUS, MEMBER_SECURITY(AsOne), MEMBER_SERVICE(AsOne), MEMBER_WITHDRAWAL(AsOne)
  *
  * [referrer table]
  *     MEMBER_ADDRESS, MEMBER_FOLLOWING, MEMBER_LOGIN, PURCHASE, MEMBER_SECURITY, MEMBER_SERVICE, MEMBER_WITHDRAWAL
  *
  * [foreign property]
- *     memberStatus, memberAddressAsValid, memberLoginAsLatest, memberSecurityAsOne, memberServiceAsOne, memberWithdrawalAsOne
+ *     memberStatus, memberSecurityAsOne, memberServiceAsOne, memberWithdrawalAsOne
  *
  * [referrer property]
  *     memberAddressList, memberFollowingByMyMemberIdList, memberFollowingByYourMemberIdList, memberLoginList, purchaseList
@@ -172,7 +172,7 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
 
     /**
      * Select the entity by the primary-key value.
-     * @param memberId (会員ID): PK, ID, NotNull, INTEGER(10), FK to MEMBER_ADDRESS. (NotNull)
+     * @param memberId (会員ID): PK, ID, NotNull, INTEGER(10). (NotNull)
      * @return The optional entity selected by the PK. (NotNull: if no data, empty entity)
      * @throws EntityAlreadyDeletedException When get(), required() of return value is called and the value is null, which means entity has already been deleted (not found).
      * @throws EntityDuplicatedException When the entity has been duplicated.
@@ -729,22 +729,6 @@ public abstract class BsMemberBhv extends AbstractBehaviorWritable<Member, Membe
      */
     public List<MemberStatus> pulloutMemberStatus(List<Member> memberList)
     { return helpPulloutInternally(memberList, "memberStatus"); }
-
-    /**
-     * Pull out the list of foreign table 'MemberAddress'.
-     * @param memberList The list of member. (NotNull, EmptyAllowed)
-     * @return The list of foreign table. (NotNull, EmptyAllowed, NotNullElement)
-     */
-    public List<MemberAddress> pulloutMemberAddressAsValid(List<Member> memberList)
-    { return helpPulloutInternally(memberList, "memberAddressAsValid"); }
-
-    /**
-     * Pull out the list of foreign table 'MemberLogin'.
-     * @param memberList The list of member. (NotNull, EmptyAllowed)
-     * @return The list of foreign table. (NotNull, EmptyAllowed, NotNullElement)
-     */
-    public List<MemberLogin> pulloutMemberLoginAsLatest(List<Member> memberList)
-    { return helpPulloutInternally(memberList, "memberLoginAsLatest"); }
 
     /**
      * Pull out the list of referrer-as-one table 'MemberSecurity'.

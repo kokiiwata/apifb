@@ -85,7 +85,7 @@ public class MemberFollowingDbm extends AbstractDBMeta {
     protected final String _tableDbName = "MEMBER_FOLLOWING";
     protected final String _tableDispName = "MEMBER_FOLLOWING";
     protected final String _tablePropertyName = "memberFollowing";
-    protected final TableSqlName _tableSqlName = new TableSqlName("MEMBER_FOLLOWING", _tableDbName);
+    protected final TableSqlName _tableSqlName = new TableSqlName("MAIHAMADB.PUBLIC.MEMBER_FOLLOWING", _tableDbName);
     { _tableSqlName.xacceptFilter(DBFluteConfig.getInstance().getTableSqlNameFilter()); }
     public String getTableDbName() { return _tableDbName; }
     public String getTableDispName() { return _tableDispName; }

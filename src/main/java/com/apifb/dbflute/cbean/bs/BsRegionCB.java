@@ -27,7 +27,6 @@ import org.dbflute.cbean.scoping.*;
 import org.dbflute.dbmeta.DBMetaProvider;
 import org.dbflute.twowaysql.factory.SqlAnalyzerFactory;
 import org.dbflute.twowaysql.style.BoundDateDisplayTimeZoneProvider;
-import com.apifb.dbflute.allcommon.CDef;
 import com.apifb.dbflute.allcommon.DBFluteConfig;
 import com.apifb.dbflute.allcommon.DBMetaInstanceHandler;
 import com.apifb.dbflute.allcommon.ImplementedInvokerAssistant;
@@ -93,13 +92,13 @@ public class BsRegionCB extends AbstractConditionBean {
     //                                                                 ===================
     /**
      * Accept the query condition of primary key as equal.
-     * @param regionId (地域ID): PK, NotNull, INTEGER(10), classification=Region. (NotNull)
+     * @param regionId (地域ID): PK, NotNull, INTEGER(10). (NotNull)
      * @return this. (NotNull)
      */
-    public RegionCB acceptPK(CDef.Region regionId) {
+    public RegionCB acceptPK(Integer regionId) {
         assertObjectNotNull("regionId", regionId);
         BsRegionCB cb = this;
-        cb.query().setRegionId_Equal_AsRegion(regionId);
+        cb.query().setRegionId_Equal(regionId);
         return (RegionCB)this;
     }
 
@@ -296,7 +295,7 @@ public class BsRegionCB extends AbstractConditionBean {
                              , HpSDRFunctionFactory sdrFuncFactory)
         { super(baseCB, qyCall, purpose, dbmetaProvider, sdrFuncFactory); }
         /**
-         * (地域ID)REGION_ID: {PK, NotNull, INTEGER(10), classification=Region}
+         * (地域ID)REGION_ID: {PK, NotNull, INTEGER(10)}
          * @return The information object of specified column. (NotNull)
          */
         public SpecifiedColumn columnRegionId() { return doColumn("REGION_ID"); }
@@ -425,6 +424,13 @@ public class BsRegionCB extends AbstractConditionBean {
      */
     public void orScopeQueryAndPart(AndQuery<RegionCB> andCBLambda) {
         xorSQAP((RegionCB)this, andCBLambda);
+    }
+
+    // ===================================================================================
+    //                                                                       Cursor Select
+    //                                                                       =============
+    public void customizeCursorSelect(SVOptionCall<CursorSelectOption> opLambda) {
+        doAcceptCursorSelectOption(opLambda);
     }
 
     // ===================================================================================
