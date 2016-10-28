@@ -9,6 +9,9 @@ import org.lastaflute.web.response.HtmlResponse;
 public class RegisterAction extends ApifbBoot {
     @Excute
     public HtmlResponse index(Integer puroductId, RgisterForm form) {
-
+        validate(form, messages -> {}, () -> {
+            return asHtml(path_Register_RegisterHtml);
+        });
+        return asHtml(path_Register_RegisterHtml);
     }
 }
